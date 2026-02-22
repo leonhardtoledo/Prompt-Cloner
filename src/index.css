@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-neon-cyan: #00f2ff;
+  --color-neon-purple: #bc13fe;
+}
+
+body {
+  @apply bg-[#050505] text-zinc-100 font-sans antialiased overflow-x-hidden;
+  background-image: 
+    radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.15), transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(188, 19, 254, 0.1), transparent 40%);
+}
+
+.glass {
+  @apply bg-black/40 backdrop-blur-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)];
+}
+
+.neon-border {
+  @apply border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.1)];
+}
+
+.neon-text {
+  @apply text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)];
+}
+
+.markdown-body {
+  @apply text-zinc-300 leading-relaxed;
+}
+
+.markdown-body h3 {
+  @apply text-cyan-400 font-bold mt-6 mb-3 flex items-center gap-2 uppercase tracking-tighter text-lg;
+}
+
+.markdown-body p {
+  @apply mb-4 text-sm md:text-base;
+}
+
+.markdown-body strong {
+  @apply text-white font-semibold;
+}
+
+.markdown-body ul {
+  @apply space-y-2 mb-4 list-none;
+}
+
+.markdown-body li {
+  @apply flex items-start gap-2 before:content-['▹'] before:text-cyan-500 before:font-bold;
+}
+
+.markdown-body code {
+  @apply bg-cyan-500/10 px-2 py-0.5 rounded text-sm font-mono text-cyan-300 border border-cyan-500/20;
+}
+
+.markdown-body pre {
+  @apply bg-zinc-900/80 p-6 rounded-2xl border border-cyan-500/20 overflow-x-auto mb-6 shadow-inner;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(0, 242, 255, 0.5), transparent);
+  animation: scanline 3s linear infinite;
+  pointer-events: none;
+}
+
